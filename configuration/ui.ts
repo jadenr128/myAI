@@ -1,7 +1,7 @@
 import { AI_NAME, OWNER_NAME } from "@/configuration/identity";
 
 export const CHAT_HEADER: string = `Welcome to UnderwriterX - Your Insurance Assistant`;
-export const MESSAGE_PLACEHOLDER: string = `[MESSAGE PLACEHOLDER]`;
+export const MESSAGE_PLACEHOLDER: string = `Ask UnderwriterX anything about National or Illinois Insurance`;
 export const FOOTER_MESSAGE: string = `Customized AI by Jaden Rice @ UNC`;
 export const CLEAR_BUTTON_TEXT: string = `[CLEAR BUTTON TEXT]`;
 export const PAGE_TITLE: string = `[PAGE TITLE]`;
