@@ -33,4 +33,20 @@ body {
   }
 
   .dark {
-    --background: #0D3B66; /* Deep blue fo
+    --background: #0D3B66; /* Deep blue for dark mode */
+    --foreground: #F0F0F0;
+    --card: #1E1E1E;
+    --card-foreground: #F0F0F0;
+    --popover: #1E1E1E;
+    --popover-foreground: #F0F0F0;
+    --primary: #3399FF;
+    --secondary: #202020;
+    --accent: #FF4D4D;
+  }
+
+  /* Force Background & Text Color */
+  body {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+  }
+}
