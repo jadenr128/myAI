@@ -50,3 +50,24 @@ body {
     color: var(--foreground) !important;
   }
 }
+
+@layer base {
+  /* Ensure the chat input is always visible */
+  input {
+    background-color: #FFFFFF !important; /* White input field */
+    color: #1A1A1A !important; /* Dark text */
+    border: 1px solid #8AC6ED !important; /* Light blue border */
+    padding: 10px !important;
+    border-radius: 8px !important;
+  }
+
+  /* Ensure the chat input container is visible */
+  .chat-input-container {
+    display: flex !important;
+    background-color: #FFFFFF !important;
+    padding: 10px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
