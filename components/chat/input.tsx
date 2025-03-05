@@ -15,18 +15,6 @@ interface ChatInputProps {
   isLoading: boolean;
 }
 
-// ✅ Ensure TypeScript knows about SpeechRecognition
-declare global {
-  interface Window {
-    webkitSpeechRecognition: any;
-  }
-}
-
-// ✅ TypeScript Fix: Declare SpeechRecognitionEvent if missing
-type SpeechRecognitionEventType = Event & {
-  results: SpeechRecognitionResultList;
-};
-
 export default function ChatInput({
   handleInputChange,
   handleSubmit,
@@ -40,30 +28,6 @@ export default function ChatInput({
       message: "",
     },
   });
-
-  const startVoiceRecognition = () => {
-    if (!window.webkitSpeechRecognition) {
-      alert("Your browser does not support voice input. Please use Chrome.");
-      return;
-    }
-
-    const recognition = new window.webkitSpeechRecognition();
-    recognition.continuous = false;
-    recognition.lang = "en-US";
-
-    recognition.onstart = () => setIsListening(true);
-    recognition.onend = () => setIsListening(false);
-
-    // ✅ Fixed TypeScript Error Here
-    recognition.onresult = (event: SpeechRecognitionEventType) => {
-      const transcript = event.results[0][0].transcript;
-      handleInputChange({
-        target: { value: transcript },
-      } as React.ChangeEvent<HTMLInputElement>);
-    };
-
-    recognition.start();
-  };
 
   return (
     <>
@@ -95,23 +59,19 @@ export default function ChatInput({
                   </FormItem>
                 )}
               />
-
               {/* 🎤 Voice Input Button */}
               <Button
                 type="button"
-                onClick={startVoiceRecognition}
-                className={`rounded-full w-10 h-10 p-0 flex items-center justify-center ${
-                  isListening ? "bg-red-500" : "bg-blue-500"
-                }`}
+                className="rounded-full w-10 h-10 p-0 flex items-center justify-center bg-blue-500 text-white"
                 disabled={isLoading}
               >
-                <Mic className="w-5 h-5 text-white" />
+                <Mic className="w-5 h-5" />
               </Button>
 
-              {/* Submit Button */}
+              {/* Submit Button (Fixes Missing Send Button) */}
               <Button
                 type="submit"
-                className="rounded-full w-10 h-10 p-0 flex items-center justify-center"
+                className="rounded-full w-10 h-10 p-0 flex items-center justify-center bg-blue-500 text-white"
                 disabled={input.trim() === "" || isLoading}
               >
                 <ArrowUp className="w-5 h-5" />
@@ -124,4 +84,5 @@ export default function ChatInput({
     </>
   );
 }
+
 
