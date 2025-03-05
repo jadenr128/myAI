@@ -17,13 +17,26 @@ export default function ChatHeader({
   clearMessages: () => void;
 }) {
   return (
-    <div className="z-10 flex justify-center items-center fixed top-0 w-full p-5 bg-white shadow-[0_10px_15px_-3px_rgba(255,255,255,1)]">
+    <div className="z-10 flex justify-center items-center fixed top-0 w-full p-5 bg-white shadow-md border-b border-gray-300">
       <div className="flex w-full">
         <div className="flex-0 w-[100px]"></div>
-        <div className="flex-1 flex justify-center items-center gap-2">
+
+        {/* Centered Logo & Text */}
+        <div className="flex-1 flex justify-center items-center gap-3">
+          {/* Four Red Stars (Chicago Flag Theme) */}
+          <div className="flex space-x-1">
+            {Array(4)
+              .fill(0)
+              .map((_, i) => (
+                <span key={i} className="text-red-500 text-2xl">★</span>
+              ))}
+          </div>
+
           <AILogo />
-          <p>{CHAT_HEADER}</p>
+          <p className="font-semibold text-lg text-primary">{CHAT_HEADER}</p>
         </div>
+
+        {/* Clear Button */}
         <div className="flex-0 w-[100px] flex justify-end items-center">
           <Button
             onClick={clearMessages}
