@@ -4,13 +4,6 @@ import Image from "next/image";
 import { CHAT_HEADER, CLEAR_BUTTON_TEXT } from "@/configuration/ui";
 import { AI_NAME } from "@/configuration/identity";
 
-export const AILogo = () => (
-  <div className="w-12 h-12 relative">
-    <Image src="/ai-logo.png" alt={AI_NAME} width={48} height={48} />
-    <div className="w-2 h-2 rounded-full bg-green-500 absolute -bottom-0.5 -right-0.5"></div>
-  </div>
-);
-
 export default function ChatHeader({
   clearMessages,
 }: {
@@ -21,7 +14,7 @@ export default function ChatHeader({
       <div className="flex w-full">
         <div className="flex-0 w-[100px]"></div>
 
-        {/* Centered Logo & Text */}
+        {/* Centered Header with Stars & New Icon */}
         <div className="flex-1 flex justify-center items-center gap-3">
           {/* Four Red Stars (Chicago Flag Theme) */}
           <div className="flex space-x-1">
@@ -32,16 +25,16 @@ export default function ChatHeader({
               ))}
           </div>
 
-          {/* REMOVE this if you don't want an icon */}
-          {/* Replace the icon below if needed */}
-          {/* Example Replacements: 💬 (Chat), 📢 (Announcement), 🔍 (Search) */}
-          <span className="text-3xl">💬</span> 
+          {/* New Icon (Instead of Face Avatar) */}
+          <span className="text-3xl">💬</span>
 
-          <AILogo />
-          <p className="font-semibold text-lg text-primary">{CHAT_HEADER}</p>
+          {/* Header Title */}
+          <p className="font-semibold text-lg text-primary">
+            SmartInsure - Your Insurance Assistant
+          </p>
         </div>
 
-        {/* Clear Button */}
+        {/* Clear Chat Button */}
         <div className="flex-0 w-[100px] flex justify-end items-center">
           <Button
             onClick={clearMessages}
