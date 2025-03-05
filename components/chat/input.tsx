@@ -15,6 +15,13 @@ interface ChatInputProps {
   isLoading: boolean;
 }
 
+// ✅ TypeScript Fix: Declare `webkitSpeechRecognition` globally
+declare global {
+  interface Window {
+    webkitSpeechRecognition: any;
+  }
+}
+
 export default function ChatInput({
   handleInputChange,
   handleSubmit,
@@ -30,7 +37,7 @@ export default function ChatInput({
   });
 
   const startVoiceRecognition = () => {
-    if (!("webkitSpeechRecognition" in window)) {
+    if (!window.webkitSpeechRecognition) {
       alert("Your browser does not support voice input. Please use Chrome.");
       return;
     }
@@ -44,7 +51,9 @@ export default function ChatInput({
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
-      handleInputChange({ target: { value: transcript } } as React.ChangeEvent<HTMLInputElement>);
+      handleInputChange({
+        target: { value: transcript },
+      } as React.ChangeEvent<HTMLInputElement>);
     };
 
     recognition.start();
@@ -80,6 +89,7 @@ export default function ChatInput({
                   </FormItem>
                 )}
               />
+
               {/* 🎤 Voice Input Button */}
               <Button
                 type="button"
