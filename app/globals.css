@@ -14,34 +14,34 @@ body {
 
 @layer base {
   :root {
-    --background: hsl(204, 100%, 90%); /* Light blue (Chicago flag) */
-    --foreground: hsl(220, 15%, 10%); /* Dark text */
-    --card: hsl(0, 0%, 100%); /* White */
-    --card-foreground: hsl(220, 15%, 15%);
-    --popover: hsl(0, 0%, 100%);
-    --popover-foreground: hsl(220, 15%, 15%);
-    --primary: hsl(204, 100%, 50%); /* Strong Chicago blue */
-    --primary-foreground: hsl(0, 0%, 100%);
-    --secondary: hsl(0, 0%, 100%); /* White */
-    --secondary-foreground: hsl(220, 15%, 15%);
-    --muted: hsl(204, 30%, 85%);
-    --muted-foreground: hsl(220, 15%, 35%);
-    --accent: hsl(0, 78%, 55%); /* Red (for stars & accents) */
-    --accent-foreground: hsl(0, 0%, 100%);
-    --border: hsl(204, 100%, 70%);
-    --ring: hsl(204, 100%, 50%);
+    --background: #B3DDF2; /* Light blue (Chicago flag) */
+    --foreground: #1A1A1A; /* Dark text */
+    --card: #FFFFFF; /* White */
+    --card-foreground: #2A2A2A;
+    --popover: #FFFFFF;
+    --popover-foreground: #2A2A2A;
+    --primary: #0074D9; /* Stronger Chicago blue */
+    --primary-foreground: #FFFFFF;
+    --secondary: #FFFFFF; /* White */
+    --secondary-foreground: #1A1A1A;
+    --muted: #A9D2EB;
+    --muted-foreground: #4A4A4A;
+    --accent: #FF0000; /* Red (for stars & accents) */
+    --accent-foreground: #FFFFFF;
+    --border: #8AC6ED;
+    --ring: #0074D9;
   }
 
   .dark {
-    --background: hsl(204, 100%, 15%); /* Deep blue for dark mode */
-    --foreground: hsl(0, 0%, 95%);
-    --card: hsl(220, 30%, 20%);
-    --card-foreground: hsl(0, 0%, 95%);
-    --popover: hsl(220, 30%, 20%);
-    --popover-foreground: hsl(0, 0%, 95%);
-    --primary: hsl(204, 100%, 75%);
-    --secondary: hsl(0, 0%, 20%);
-    --accent: hsl(0, 78%, 60%);
+    --background: #0D3B66; /* Deep blue for dark mode */
+    --foreground: #F0F0F0;
+    --card: #1E1E1E;
+    --card-foreground: #F0F0F0;
+    --popover: #1E1E1E;
+    --popover-foreground: #F0F0F0;
+    --primary: #3399FF;
+    --secondary: #202020;
+    --accent: #FF4D4D;
   }
 }
 
