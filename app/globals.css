@@ -14,22 +14,22 @@ body {
 
 @layer base {
   :root {
-    --background: #B3DDF2; /* Light blue (Chicago flag) */
-    --foreground: #1A1A1A; /* Dark text */
-    --card: #FFFFFF; /* White */
-    --card-foreground: #2A2A2A;
+    --background: #A0CFF7; /* Slightly deeper light blue for better contrast */
+    --foreground: #FFFFFF; /* White text */
+    --card: #FFFFFF; /* White chat bubbles */
+    --card-foreground: #1A1A1A; /* Dark text inside chat bubbles */
     --popover: #FFFFFF;
-    --popover-foreground: #2A2A2A;
+    --popover-foreground: #1A1A1A;
     --primary: #0074D9; /* Stronger Chicago blue */
     --primary-foreground: #FFFFFF;
     --secondary: #FFFFFF; /* White */
     --secondary-foreground: #1A1A1A;
-    --muted: #A9D2EB;
-    --muted-foreground: #4A4A4A;
-    --accent: #FF0000; /* Red (for stars & accents) */
+    --muted: #B3DDF2; /* Muted blue */
+    --muted-foreground: #FFFFFF;
+    --accent: #FF0000; /* Red for stars & accents */
     --accent-foreground: #FFFFFF;
-    --border: #8AC6ED;
-    --ring: #0074D9;
+    --border: #8AC6ED; /* Slightly darker blue */
+    --ring: #0074D9; /* Chicago blue */
   }
 
   .dark {
