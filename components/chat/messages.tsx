@@ -1,18 +1,8 @@
 import { DisplayMessage } from "@/types";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Formatting } from "./formatting";
 import { LoadingIndicator } from "@/types";
 import Loading from "./loading";
-import { AI_NAME } from "@/configuration/identity";
-
-function AILogo() {
-  return (
-    <div className="w-9 h-9">
-      <Image src="/ai-logo.png" alt={AI_NAME} width={36} height={36} />
-    </div>
-  );
-}
 
 function UserMessage({ message }: { message: DisplayMessage }) {
   return (
@@ -20,8 +10,10 @@ function UserMessage({ message }: { message: DisplayMessage }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-1 py-1 justify-end"
+      className="flex flex-1 py-1 justify-end items-center gap-2"
     >
+      {/* 🚙 Car Icon for User Messages */}
+      <span className="text-2xl">🚙</span>
       <motion.div
         whileHover={{ scale: 1.01 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -39,9 +31,10 @@ function AssistantMessage({ message }: { message: DisplayMessage }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-1 py-1 justify-start gap-[5px]"
+      className="flex flex-1 py-1 justify-start items-center gap-2"
     >
-      <div className="w-9 flex items-end">{<AILogo />}</div>
+      {/* 🏡 House Icon for AI Messages */}
+      <span className="text-2xl">🏡</span>
       <motion.div
         whileHover={{ scale: 1.01 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
