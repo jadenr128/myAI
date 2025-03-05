@@ -4,6 +4,8 @@ import { citationSchema } from "./data";
 export const displayMessageSchema = z.object({
   role: z.enum(["user", "assistant", "system"]),
   content: z.string(),
+  style: z.enum(["default", "highlighted", "error"]).default("default"),
+  animation: z.enum(["fade-in", "bounce", "none"]).default("fade-in")
   citations: z.array(citationSchema).default([]),
 });
 export type DisplayMessage = z.infer<typeof displayMessageSchema>;
