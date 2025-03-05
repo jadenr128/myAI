@@ -49,7 +49,8 @@ export default function ChatInput({
     recognition.onstart = () => setIsListening(true);
     recognition.onend = () => setIsListening(false);
 
-    recognition.onresult = (event) => {
+    // ✅ TypeScript Fix: Explicitly define `event` type
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
       const transcript = event.results[0][0].transcript;
       handleInputChange({
         target: { value: transcript },
