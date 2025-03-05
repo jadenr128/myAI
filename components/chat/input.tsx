@@ -3,7 +3,7 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Mic } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import ChatFooter from "@/components/chat/footer";
@@ -22,11 +22,33 @@ export default function ChatInput({
   isLoading,
 }: ChatInputProps) {
   const [isFocused, setIsFocused] = useState(false);
+  const [isListening, setIsListening] = useState(false);
   const form = useForm({
     defaultValues: {
       message: "",
     },
   });
+
+  const startVoiceRecognition = () => {
+    if (!("webkitSpeechRecognition" in window)) {
+      alert("Your browser does not support voice input. Please use Chrome.");
+      return;
+    }
+
+    const recognition = new window.webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang = "en-US";
+
+    recognition.onstart = () => setIsListening(true);
+    recognition.onend = () => setIsListening(false);
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      handleInputChange({ target: { value: transcript } } as React.ChangeEvent<HTMLInputElement>);
+    };
+
+    recognition.start();
+  };
 
   return (
     <>
@@ -52,12 +74,25 @@ export default function ChatInput({
                         className="border-none focus-visible:ring-0 focus-visible:ring-offset-0 bg-transparent"
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
-                        placeholder="Type your message here..."
+                        placeholder="Type your message here or use voice input..."
                       />
                     </FormControl>
                   </FormItem>
                 )}
               />
+              {/* 🎤 Voice Input Button */}
+              <Button
+                type="button"
+                onClick={startVoiceRecognition}
+                className={`rounded-full w-10 h-10 p-0 flex items-center justify-center ${
+                  isListening ? "bg-red-500" : "bg-blue-500"
+                }`}
+                disabled={isLoading}
+              >
+                <Mic className="w-5 h-5 text-white" />
+              </Button>
+
+              {/* Submit Button */}
               <Button
                 type="submit"
                 className="rounded-full w-10 h-10 p-0 flex items-center justify-center"
