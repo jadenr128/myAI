@@ -14,7 +14,7 @@ body {
 
 @layer base {
   :root {
-    --background: #A0CFF7; /* Slightly deeper light blue for better contrast */
+    --background: #A0CFF7; /* Light blue */
     --foreground: #FFFFFF; /* White text */
     --card: #FFFFFF; /* White chat bubbles */
     --card-foreground: #1A1A1A; /* Dark text inside chat bubbles */
@@ -33,24 +33,4 @@ body {
   }
 
   .dark {
-    --background: #0D3B66; /* Deep blue for dark mode */
-    --foreground: #F0F0F0;
-    --card: #1E1E1E;
-    --card-foreground: #F0F0F0;
-    --popover: #1E1E1E;
-    --popover-foreground: #F0F0F0;
-    --primary: #3399FF;
-    --secondary: #202020;
-    --accent: #FF4D4D;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
+    --background: #0D3B66; /* Deep blue fo
