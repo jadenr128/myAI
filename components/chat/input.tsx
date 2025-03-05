@@ -15,12 +15,17 @@ interface ChatInputProps {
   isLoading: boolean;
 }
 
-// ✅ TypeScript Fix: Declare `webkitSpeechRecognition` globally
+// ✅ Ensure TypeScript knows about SpeechRecognition
 declare global {
   interface Window {
     webkitSpeechRecognition: any;
   }
 }
+
+// ✅ TypeScript Fix: Declare SpeechRecognitionEvent if missing
+type SpeechRecognitionEventType = Event & {
+  results: SpeechRecognitionResultList;
+};
 
 export default function ChatInput({
   handleInputChange,
@@ -49,8 +54,8 @@ export default function ChatInput({
     recognition.onstart = () => setIsListening(true);
     recognition.onend = () => setIsListening(false);
 
-    // ✅ TypeScript Fix: Explicitly define `event` type
-    recognition.onresult = (event: SpeechRecognitionEvent) => {
+    // ✅ Fixed TypeScript Error Here
+    recognition.onresult = (event: SpeechRecognitionEventType) => {
       const transcript = event.results[0][0].transcript;
       handleInputChange({
         target: { value: transcript },
@@ -119,3 +124,4 @@ export default function ChatInput({
     </>
   );
 }
+
