@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Head from "next/head"; // ✅ Import Head to manually set favicon
 import localFont from "next/font/local";
 import { PAGE_TITLE, PAGE_DESCRIPTION } from "@/configuration/ui";
 import "./globals.css";
@@ -29,6 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        {/* ✅ Manually force Chrome to load the correct favicon */}
+        <link rel="icon" type="image/x-icon" href="/chicago-icon.ico" />
+      </Head>
       <TooltipProvider>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
