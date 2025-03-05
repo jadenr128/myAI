@@ -71,9 +71,8 @@ export default function ChatMessages({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col flex-1 p-1 gap-3"
+      className="flex flex-col flex-1 p-1 gap-3 pt-24" // ✅ Increased top padding for mobile
     >
-      <div className="h-[60px]"></div>
       {messages.length === 0 ? (
         <EmptyMessages />
       ) : (
@@ -97,3 +96,4 @@ export default function ChatMessages({
     </motion.div>
   );
 }
+
