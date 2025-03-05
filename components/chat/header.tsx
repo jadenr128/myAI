@@ -17,19 +17,19 @@ export default function ChatHeader({
           ))}
       </div>
 
-      {/* Center: Chatbot Title */}
-      <p className="font-semibold text-lg text-primary">
+      {/* Center: Chatbot Title (Now in Dark Blue for Visibility) */}
+      <p className="font-semibold text-lg text-blue-900">
         SmartInsure - Your Insurance Assistant
       </p>
 
-      {/* Right Side: Clear Chat Button */}
+      {/* Right Side: Clear Chat Button (Now in Dark Blue for Visibility) */}
       <Button
         onClick={clearMessages}
-        className="gap-2 shadow-sm"
+        className="gap-2 shadow-sm text-blue-900 border-blue-900 hover:bg-blue-100"
         variant="outline"
         size="sm"
       >
-        <EraserIcon className="w-4 h-4" />
+        <EraserIcon className="w-4 h-4 text-blue-900" />
         <span>Clear Chat</span>
       </Button>
     </div>
