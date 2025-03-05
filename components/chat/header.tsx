@@ -32,6 +32,9 @@ export default function ChatHeader({
               ))}
           </div>
 
+          {/* New Emoji/Icon Next to Chatbot Name */}
+          <span className="text-3xl">🛡️</span>
+
           <AILogo />
           <p className="font-semibold text-lg text-primary">{CHAT_HEADER}</p>
         </div>
