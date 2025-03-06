@@ -29,6 +29,37 @@ export default function ChatInput({
     },
   });
 
+  const startVoiceRecognition = () => {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      alert("Your browser does not support voice input. Please use Chrome.");
+      return;
+    }
+
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+
+    recognition.continuous = false;
+    recognition.lang = "en-US";
+
+    recognition.onstart = () => setIsListening(true);
+    recognition.onend = () => setIsListening(false);
+
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
+      const transcript = event.results[0][0].transcript;
+      handleInputChange({
+        target: { value: transcript },
+      } as React.ChangeEvent<HTMLInputElement>);
+    };
+
+    recognition.onerror = (event) => {
+      console.error("Speech Recognition Error:", event);
+      alert("Speech recognition error. Please try again.");
+    };
+
+    recognition.start();
+  };
+
   return (
     <>
       <div className="z-10 flex flex-col justify-center items-center fixed bottom-0 w-full p-5 bg-white shadow-[0_-10px_15px_-2px_rgba(255,255,255,1)] text-base">
@@ -59,19 +90,23 @@ export default function ChatInput({
                   </FormItem>
                 )}
               />
+
               {/* 🎤 Voice Input Button */}
               <Button
                 type="button"
-                className="rounded-full w-10 h-10 p-0 flex items-center justify-center bg-blue-500 text-white"
+                onClick={startVoiceRecognition}
+                className={`rounded-full w-10 h-10 p-0 flex items-center justify-center ${
+                  isListening ? "bg-red-500" : "bg-blue-500"
+                }`}
                 disabled={isLoading}
               >
-                <Mic className="w-5 h-5" />
+                <Mic className="w-5 h-5 text-white" />
               </Button>
 
-              {/* Submit Button (Fixes Missing Send Button) */}
+              {/* Submit Button */}
               <Button
                 type="submit"
-                className="rounded-full w-10 h-10 p-0 flex items-center justify-center bg-blue-500 text-white"
+                className="rounded-full w-10 h-10 p-0 flex items-center justify-center"
                 disabled={input.trim() === "" || isLoading}
               >
                 <ArrowUp className="w-5 h-5" />
@@ -84,5 +119,3 @@ export default function ChatInput({
     </>
   );
 }
-
-
